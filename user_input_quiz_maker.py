@@ -13,12 +13,19 @@ Ask another question until the user chose to exit.
 #make a "Next question" functionality using the while loop, make it go on until the user tells the program
 #to stop.
 
+f = open("user_quiz","x")
 user_name = input("Please enter your name: ")
 
-if user_name:
+if user_name: #Checks whether the variable is empty or not, runs when not empty
     while True:
         try:
-            print(" ")
+            user_question = input("Please input a quiz question: ")
+            with open("user_quiz", "a") as f:
+                f.write(str(user_name))
+        
+
         except ValueError:
             print(" ")
 
+
+print(f.read())
