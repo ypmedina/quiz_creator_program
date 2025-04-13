@@ -13,5 +13,12 @@ Ask another question until the user chose to exit.
 #make a "Next question" functionality using the while loop, make it go on until the user tells the program
 #to stop.
 
+user_name = input("Please enter your name: ")
 
+if user_name:
+    while True:
+        try:
+            print(" ")
+        except ValueError:
+            print(" ")
 
