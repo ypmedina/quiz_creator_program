@@ -5,3 +5,13 @@ Ask another question until the user chose to exit.
 """
 
 #use the function open() to create the text file
+
+#ask the user for their name, after asking the user for their name, display text that will prompt them to
+#write a quiz question and let the user input 4 different answers to the question with 1 being the correct
+#answer.
+
+#make a "Next question" functionality using the while loop, make it go on until the user tells the program
+#to stop.
+
+
+
