@@ -18,34 +18,32 @@ user_name = input("Please enter your name: ")
 
 if user_name: #Checks whether the variable is empty or not, runs when not empty
     while True:
-        try:
-            user_question = input("Please input a quiz question: ")
-            with open("user_quiz", "a") as f:
-                f.write(str(user_question + "\n"))
+        user_question = input("Please input a quiz question: ")
+        with open("user_quiz", "a") as f:
+            f.write(str(user_question + "\n"))
 
-            user_choice1 = input("Please enter a quiz choice: ")
-            with open("user_quiz", "a") as f:
-                f.write(str(user_choice1+ "\n"))
+        user_choice1 = input("Please enter a quiz choice: ")
+        with open("user_quiz", "a") as f:
+            f.write(str(user_choice1+ "\n"))
 
-            user_choice2 = input("Please enter a quiz choice: ")
-            with open("user_quiz", "a") as f:
-                f.write(str(user_choice2 + "\n"))
+        user_choice2 = input("Please enter a quiz choice: ")
+        with open("user_quiz", "a") as f:
+            f.write(str(user_choice2 + "\n"))
 
-            user_choice3 = input("Please enter a quiz choice: ")
-            with open("user_quiz", "a") as f:
-                f.write(str(user_choice3 + "\n"))
+        user_choice3 = input("Please enter a quiz choice: ")
+        with open("user_quiz", "a") as f:
+            f.write(str(user_choice3 + "\n"))
 
-            user_choice4 = input("Please enter a quiz choice: ")
-            with open("user_quiz", "a") as f:
-                f.write(str(user_choice4 + "\n"))
+        user_choice4 = input("Please enter a quiz choice: ")
+        with open("user_quiz", "a") as f:
+            f.write(str(user_choice4 + "\n"))
 
-            user_exit = input("Do you want to input another question? Y/N: ").lower()
-            if user_exit[0] == "n":
-                break
+        user_exit = input("Do you want to input another question? Y/N: ").lower()
+        if user_exit[0] == "n":
+            break
 
 
-        except ValueError:
-            print(" ")
+
 
 f = open("user_quiz", "r")
 print(f.read())
