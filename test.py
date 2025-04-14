@@ -79,9 +79,9 @@ def next_button():
     correct_answer = r.get()
     if question and all(answers) and correct_answer:
         quiz_items.append({
-            'question: ': question,
-            'answers: ':answers,
-            'correct answer: ':correct_answer
+            'question': question,
+            'answers':answers,
+            'correct':correct_answer
         })
 
     question_entry.delete('1.0', 'end')
@@ -89,27 +89,33 @@ def next_button():
     input_field2.delete('1.0', 'end')
     input_field3.delete('1.0', 'end')
     input_field4.delete('1.0', 'end')
+    r.set(0)
 
     print(quiz_items) #placeholder since the outputs are not yet inputted in a text file
+
+def save_button():
+    with open("user_quiz_test.txt", "w") as file:
+        for i in range(len(quiz_items)):
+            q = quiz_items[i]
+            file.write(f"Q{i+1}: {q['question']}\n")
+            for j in range(len(q['answers'])):
+                alphabet = chr(65 + j)
+                if (j + 1)  == q['correct']:
+                    file.write(f"{alphabet}. {q['answers'][j]} (correct)\n")
+                else:
+                    file.write(f"{alphabet}. {q['answers'][j]}\n")
+
+def exit_button():
+    window.destroy()
+
+save_btn = tk.Button(window, text="Save", command=save_button)
+save_btn.pack()
 
 next_btn = tk.Button(window,text="next", command=next_button)
 next_btn.pack()
 
-
-
-
-
-
-button1 = tk.Button(window, text="Save")
-button1.pack()
-
-
-
-button3 = tk.Button(window, text="Stop")
+button3 = tk.Button(window, text="Stop", command=exit_button)
 button3.pack()
-
-
-
 
 
 
