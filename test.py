@@ -15,6 +15,8 @@ Ask another question until the user chose to exit.
 
 
 import tkinter as tk
+from tkinter import Radiobutton, IntVar
+
 window =tk.Tk()
 #Make a save, exit, and next button
 #Do checkboxes for the correct answer picking
@@ -28,10 +30,7 @@ window.configure(bg=bg_color)
 
 #buttons first
 #question, answer1, answer2, answer3, answer4, checkboxes, next, save and stop
-#5 input fields, 7 buttons
-
-
-
+#5 input fields, 3 buttons, 4 radio buttons(Replacement for checkbox)
 
 entry1 = tk.Entry(window, width=50)
 entry1.pack()
@@ -58,8 +57,23 @@ entry6.pack()
 entry6.insert(0,"Enter answer D: ")
 
 
-button1 = tk.Button(window, text="Button")
+button1 = tk.Button(window, text="Save")
 button1.pack()
+
+button2 = tk.Button(window, text="Next")
+button2.pack()
+
+button3 = tk.Button(window, text="Stop")
+button3.pack()
+
+r = IntVar()
+
+Radiobutton(window, text="A", variable=r, value=1).pack()
+Radiobutton(window, text="B", variable=r, value=2).pack()
+Radiobutton(window, text="C", variable=r, value=3).pack()
+Radiobutton(window, text="D", variable=r, value=4).pack()
+
+
 
 
 
