@@ -38,6 +38,10 @@ if user_name: #Checks whether the variable is empty or not, runs when not empty
         with open("user_quiz", "a") as f:
             f.write(str(user_choice4 + "\n"))
 
+        user_answer = input("What is the correct answer for the question? (A, B, C, D): ")
+        with open("user_quiz", "a") as f:
+            f.write(str(user_answer + "\n"))
+
         user_exit = input("Do you want to input another question? Y/N: ").lower()
         if user_exit[0] == "n":
             break
