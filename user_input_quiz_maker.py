@@ -20,27 +20,27 @@ if user_name: #Checks whether the variable is empty or not, runs when not empty
     while True:
         user_question = input("Please input a quiz question: ")
         with open("user_quiz", "a") as f:
-            f.write(str(user_question + "\n"))
+            f.write("Question: " + str(user_question + "\n"))
 
         user_choice1 = input("Please enter a quiz choice: ")
         with open("user_quiz", "a") as f:
-            f.write(str(user_choice1+ "\n"))
+            f.write("Answer A: " + str(user_choice1+ "\n"))
 
         user_choice2 = input("Please enter a quiz choice: ")
         with open("user_quiz", "a") as f:
-            f.write(str(user_choice2 + "\n"))
+            f.write("Answer B: " + str(user_choice2 + "\n"))
 
         user_choice3 = input("Please enter a quiz choice: ")
         with open("user_quiz", "a") as f:
-            f.write(str(user_choice3 + "\n"))
+            f.write("Answer C: " + str(user_choice3 + "\n"))
 
         user_choice4 = input("Please enter a quiz choice: ")
         with open("user_quiz", "a") as f:
-            f.write(str(user_choice4 + "\n"))
+            f.write("Answer D: " + str(user_choice4 + "\n"))
 
         user_answer = input("What is the correct answer for the question? (A, B, C, D): ")
         with open("user_quiz", "a") as f:
-            f.write(str(user_answer + "\n"))
+            f.write("Correct answer: " + str(user_answer + "\n"))
 
         user_exit = input("Do you want to input another question? Y/N: ").lower()
         if user_exit[0] == "n":
