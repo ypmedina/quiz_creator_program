@@ -15,32 +15,24 @@ Ask another question until the user chose to exit.
 
 
 import tkinter as tk
-window = tk.Tk()
+window =tk.Tk()
+#Make a save, exit, and next button
+#Do checkboxes for the correct answer picking
+#Window design: Header-#f5fcd1, background-#fff9ed, font color-#c
+bg_color = "#fff9ed"
+main_color = "#f5fcd1"
+font_color = "#f5fcd1"
 
-window.geometry("800x600")
-window.title("Quiz maker")
+window.geometry("900x600")
+window.configure(bg=bg_color)
 
-label = tk.Label(window, text="Quiz maker", font="Arial, 16")
-label.pack()
+#buttons first
 
-textbox = tk.Text(window, height=2, font="Arial, 16")
-textbox.pack()
 
-myentry = tk.Entry(window)
-myentry.pack()
 
-button = tk.Button(window, text="Next", font="Arial, 16")
-button.pack()
-
-buttonframe = tk.Frame(window)
-buttonframe.columnconfigure(0, weight=1)
 
 window.mainloop()
 
-
-
-#Make a save, exit, and next button
-#Do checkboxes for the correct answer picking
 
 
 
