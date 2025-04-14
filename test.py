@@ -41,7 +41,7 @@ entry2.pack()
 entry2.insert(0,"Enter a quiz question: ")
 
 r = IntVar()
-def test(window, number, letter):
+def answer_inputs(window, number, letter):
     frame = tk.Frame(window)
     frame.pack(padx=30, pady=10)
 
@@ -57,10 +57,20 @@ def test(window, number, letter):
 
     return frame
 
-test_text1 = test(window, 1, "A")
-test_text2 = test(window, 2, "B")
-test_text3 = test(window, 3, "C")
-test_text4 = test(window, 4, "D")
+input_field1 = answer_inputs(window, 1, "A")
+input_field2 = answer_inputs(window, 2, "B")
+input_field3 = answer_inputs(window, 3, "C")
+input_field4 = answer_inputs(window, 4, "D")
+
+#Just append the inputs into a list then make the program write that list in the text file
+#Append to the text file will only happen when the user presses "save"
+#Develop the "next" button, only append when the question, all answers and the correct answer is recorded
+#The correct answer is the radio button
+
+
+
+
+
 
 button1 = tk.Button(window, text="Save")
 button1.pack()
