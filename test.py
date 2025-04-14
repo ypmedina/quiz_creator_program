@@ -27,6 +27,42 @@ window.geometry("900x600")
 window.configure(bg=bg_color)
 
 #buttons first
+#question, answer1, answer2, answer3, answer4, checkboxes, next, save and stop
+#5 input fields, 7 buttons
+
+
+
+
+entry1 = tk.Entry(window, width=50)
+entry1.pack()
+entry1.insert(0,"Enter your name: ")
+
+entry2 = tk.Entry(window, width=50)
+entry2.pack()
+entry2.insert(0,"Enter a quiz question: ")
+
+entry3 = tk.Entry(window, width=50)
+entry3.pack()
+entry3.insert(0,"Enter answer A: ")
+
+entry4 = tk.Entry(window, width=50)
+entry4.pack()
+entry4.insert(0,"Enter answer B: ")
+
+entry5 = tk.Entry(window, width=50)
+entry5.pack()
+entry5.insert(0,"Enter answer C: ")
+
+entry6 = tk.Entry(window, width=50)
+entry6.pack()
+entry6.insert(0,"Enter answer D: ")
+
+
+button1 = tk.Button(window, text="Button")
+button1.pack()
+
+
+
 
 
 
