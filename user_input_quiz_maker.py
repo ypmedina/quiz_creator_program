@@ -22,19 +22,19 @@ if user_name: #Checks whether the variable is empty or not, runs when not empty
         with open("user_quiz", "a") as f:
             f.write("Question: " + str(user_question + "\n"))
 
-        user_choice1 = input("Please enter a quiz choice: ")
+        user_choice1 = input("Please enter a quiz choice(A): ")
         with open("user_quiz", "a") as f:
             f.write("Answer A: " + str(user_choice1+ "\n"))
 
-        user_choice2 = input("Please enter a quiz choice: ")
+        user_choice2 = input("Please enter a quiz choice(B): ")
         with open("user_quiz", "a") as f:
             f.write("Answer B: " + str(user_choice2 + "\n"))
 
-        user_choice3 = input("Please enter a quiz choice: ")
+        user_choice3 = input("Please enter a quiz choice(C): ")
         with open("user_quiz", "a") as f:
             f.write("Answer C: " + str(user_choice3 + "\n"))
 
-        user_choice4 = input("Please enter a quiz choice: ")
+        user_choice4 = input("Please enter a quiz choice(D): ")
         with open("user_quiz", "a") as f:
             f.write("Answer D: " + str(user_choice4 + "\n"))
 
