@@ -38,7 +38,15 @@ if user_name: #Checks whether the variable is empty or not, runs when not empty
         with open("user_quiz", "a") as f:
             f.write("Answer D: " + str(user_choice4 + "\n"))
 
-        user_answer = input("What is the correct answer for the question? (A, B, C, D): ")
+        valid_answer = ["A", "B", "C", "D"]
+
+        while True:
+            user_answer = input("What is the correct answer for the question? (A, B, C, D): ")
+            if user_answer in valid_answer:
+                break
+            else:
+                print("That is not a valid answer please try again: ")
+
         with open("user_quiz", "a") as f:
             f.write("Correct answer: " + str(user_answer + "\n"))
 
