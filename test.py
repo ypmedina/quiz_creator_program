@@ -32,22 +32,21 @@ window.configure(bg=bg_color)
 #question, answer1, answer2, answer3, answer4, checkboxes, next, save and stop
 #5 input fields, 3 buttons, 4 radio buttons(Replacement for checkbox)
 
-entry1 = tk.Entry(window, width=50)
-entry1.pack()
-entry1.insert(0,"Enter your name: ")
+name_entry = tk.Entry(window, width=50)
+name_entry.pack()
+name_entry.insert(0,"Enter your name: ")
 
-entry2 = tk.Entry(window, width=50)
-entry2.pack()
-entry2.insert(0,"Enter a quiz question: ")
+question_entry = tk.Entry(window, width=50)
+question_entry.pack()
+question_entry.insert(0,"Enter a quiz question: ")
 
 r = IntVar()
 def answer_inputs(window, number, letter):
     frame = tk.Frame(window)
     frame.pack(padx=30, pady=10)
 
-    entre = tk.Entry(frame,width=50)
-    entre.pack(side="left")
-    entre.insert(0, "enter answer here: ")
+    text = tk.Text(frame, height=1, width=50, font="Arial, 12")
+    text.pack(side='left')
 
     radio_but = Radiobutton(frame, variable=r, value=number)
     radio_but.pack(side="left")
@@ -55,7 +54,7 @@ def answer_inputs(window, number, letter):
     letter = tk.Label(frame, text=letter, font="Arial, 12")
     letter.pack(side="left")
 
-    return frame
+    return text
 
 input_field1 = answer_inputs(window, 1, "A")
 input_field2 = answer_inputs(window, 2, "B")
@@ -66,6 +65,30 @@ input_field4 = answer_inputs(window, 4, "D")
 #Append to the text file will only happen when the user presses "save"
 #Develop the "next" button, only append when the question, all answers and the correct answer is recorded
 #The correct answer is the radio button
+#use the get() function of tkinter
+#Use the 'command=' function of the buttons
+
+
+quiz_items = []
+def next_button():
+
+    answers = [ input_field1.get('1.0', 'end'),
+                input_field1.get('1.0', 'end'),
+                input_field1.get('1.0', 'end'),
+                input_field1.get('1.0', 'end')
+                ]
+    correct_answer = r.get()
+    if question_entry and all(answers) and correct_answer:
+        quiz_items.append({
+            'question: ': question_entry,
+            'answers: ':answers,
+            'correct answer: ':correct_answer
+        })
+
+    print(quiz_items)
+
+next_btn = tk.Button(window,text="next", command=next_button)
+next_btn.pack()
 
 
 
@@ -75,8 +98,7 @@ input_field4 = answer_inputs(window, 4, "D")
 button1 = tk.Button(window, text="Save")
 button1.pack()
 
-button2 = tk.Button(window, text="Next")
-button2.pack()
+
 
 button3 = tk.Button(window, text="Stop")
 button3.pack()
