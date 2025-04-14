@@ -36,9 +36,8 @@ name_entry = tk.Entry(window, width=50)
 name_entry.pack()
 name_entry.insert(0,"Enter your name: ")
 
-question_entry = tk.Entry(window, width=50)
+question_entry = tk.Text(window, height=1, width=50, font='Arial, 12')
 question_entry.pack()
-question_entry.insert(0,"Enter a quiz question: ")
 
 r = IntVar()
 def answer_inputs(window, number, letter):
@@ -71,21 +70,27 @@ input_field4 = answer_inputs(window, 4, "D")
 
 quiz_items = []
 def next_button():
-
+    question = question_entry.get('1.0', 'end')
     answers = [ input_field1.get('1.0', 'end'),
-                input_field1.get('1.0', 'end'),
-                input_field1.get('1.0', 'end'),
-                input_field1.get('1.0', 'end')
+                input_field2.get('1.0', 'end'),
+                input_field3.get('1.0', 'end'),
+                input_field4.get('1.0', 'end')
                 ]
     correct_answer = r.get()
-    if question_entry and all(answers) and correct_answer:
+    if question and all(answers) and correct_answer:
         quiz_items.append({
-            'question: ': question_entry,
+            'question: ': question,
             'answers: ':answers,
             'correct answer: ':correct_answer
         })
 
-    print(quiz_items)
+    question_entry.delete('1.0', 'end')
+    input_field1.delete('1.0', 'end')
+    input_field2.delete('1.0', 'end')
+    input_field3.delete('1.0', 'end')
+    input_field4.delete('1.0', 'end')
+
+    print(quiz_items) #placeholder since the outputs are not yet inputted in a text file
 
 next_btn = tk.Button(window,text="next", command=next_button)
 next_btn.pack()
