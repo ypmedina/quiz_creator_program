@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.13 (quiz_program)" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (quiz_program)" project-jdk-type="Python SDK" />
 </project>
