@@ -15,6 +15,8 @@ Ask another question until the user chose to exit.
 
 f = open("user_quiz","w")
 user_name = input("Please enter your name: ")
+with open("user_quiz", "a") as f:
+    f.write("\n\n" + "Username: " + str(user_name) + "\n")
 
 if user_name: #Checks whether the variable is empty or not, runs when not empty
     while True:
@@ -54,7 +56,6 @@ if user_name: #Checks whether the variable is empty or not, runs when not empty
         user_exit = input("Do you want to input another question? Y/N: ").lower()
         if user_exit[0] == "n":
             break
-
 
 
 
