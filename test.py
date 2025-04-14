@@ -29,11 +29,18 @@ textbox.pack()
 myentry = tk.Entry(window)
 myentry.pack()
 
+button = tk.Button(window, text="Next", font="Arial, 16")
+button.pack()
+
+buttonframe = tk.Frame(window)
+buttonframe.columnconfigure(0, weight=1)
+
 window.mainloop()
 
 
 
-
+#Make a save, exit, and next button
+#Do checkboxes for the correct answer picking
 
 
 
