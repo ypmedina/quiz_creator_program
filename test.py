@@ -40,22 +40,27 @@ entry2 = tk.Entry(window, width=50)
 entry2.pack()
 entry2.insert(0,"Enter a quiz question: ")
 
-entry3 = tk.Entry(window, width=50)
-entry3.pack()
-entry3.insert(0,"Enter answer A: ")
+r = IntVar()
+def test(window, number, letter):
+    frame = tk.Frame(window)
+    frame.pack(padx=30, pady=10)
 
-entry4 = tk.Entry(window, width=50)
-entry4.pack()
-entry4.insert(0,"Enter answer B: ")
+    entre = tk.Entry(frame,width=50)
+    entre.pack(side="left")
+    entre.insert(0, "enter answer here: ")
 
-entry5 = tk.Entry(window, width=50)
-entry5.pack()
-entry5.insert(0,"Enter answer C: ")
+    radio_but = Radiobutton(frame, variable=r, value=number)
+    radio_but.pack(side="left")
 
-entry6 = tk.Entry(window, width=50)
-entry6.pack()
-entry6.insert(0,"Enter answer D: ")
+    letter = tk.Label(frame, text=letter, font="Arial, 12")
+    letter.pack(side="left")
 
+    return frame
+
+test_text1 = test(window, 1, "A")
+test_text2 = test(window, 2, "B")
+test_text3 = test(window, 3, "C")
+test_text4 = test(window, 4, "D")
 
 button1 = tk.Button(window, text="Save")
 button1.pack()
@@ -65,16 +70,6 @@ button2.pack()
 
 button3 = tk.Button(window, text="Stop")
 button3.pack()
-
-r = IntVar()
-
-Radiobutton(window, text="A", variable=r, value=1).pack()
-Radiobutton(window, text="B", variable=r, value=2).pack()
-Radiobutton(window, text="C", variable=r, value=3).pack()
-Radiobutton(window, text="D", variable=r, value=4).pack()
-
-
-
 
 
 
