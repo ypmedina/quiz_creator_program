@@ -25,6 +25,7 @@ bg_color = "#fff9ed"
 main_color = "#f5fcd1"
 font_color = "#f5fcd1"
 
+
 window.geometry("900x600")
 window.configure(bg=bg_color)
 
@@ -99,7 +100,7 @@ def save_button():
             q = quiz_items[i]
             file.write(f"Q{i+1}: {q['question']}\n")
             for j in range(len(q['answers'])):
-                alphabet = chr(65 + j)
+                alphabet = chr(65 + j) #turn the IntVar values from r into letters(A,B,C,D)
                 if (j + 1)  == q['correct']:
                     file.write(f"{alphabet}. {q['answers'][j]} (correct)\n")
                 else:
@@ -108,15 +109,19 @@ def save_button():
 def exit_button():
     window.destroy()
 
-save_btn = tk.Button(window, text="Save", command=save_button)
-save_btn.pack()
 
-next_btn = tk.Button(window,text="next", command=next_button)
-next_btn.pack()
+#Use tk.Frame() to arrange the buttons
+button_frame = tk.Frame(window)
+button_frame.pack(padx=40, pady=30)
 
-button3 = tk.Button(window, text="Stop", command=exit_button)
-button3.pack()
+save_btn = tk.Button(button_frame, text="Save", command=save_button)
+save_btn.grid(row=0, column=0, pady=10, padx=20)
 
+stop_btn = tk.Button(button_frame, text="Stop", command=exit_button)
+stop_btn.grid(row=0, column=1, pady=10, padx=20)
+
+next_btn = tk.Button(window, text="next", command=next_button, width= 20)
+next_btn.pack(anchor='center')
 
 
 window.mainloop()
