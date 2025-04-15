@@ -32,6 +32,14 @@ window.configure(bg=bg_color)
 #question, answer1, answer2, answer3, answer4, checkboxes, next, save and stop
 #5 input fields, 3 buttons, 4 radio buttons(Replacement for checkbox)
 
+header_frame = tk.Frame(window, height=50, bd=1, bg='#fff9ed')
+header_frame.pack(fill='x')
+
+header_label = tk.Label(header_frame, text='Quiz maker', font='Arial, 60', bg='#fff9ed')
+header_label.pack(anchor="w")
+
+
+
 def user_inp(var, entry_text, border, outline):
     frame = tk.Frame(window)
     frame.pack(padx=20, pady=10)
@@ -120,7 +128,7 @@ def exit_button():
     window.destroy()
 
 #Use tk.Frame() to arrange the buttons
-button_frame = tk.Frame(window)
+button_frame = tk.Frame(window, bg='#fff9ed')
 button_frame.pack(padx=40, pady=30)
 
 save_btn = tk.Button(button_frame, text="Save", command=save_button)
