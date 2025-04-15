@@ -25,7 +25,6 @@ bg_color = "#fff9ed"
 main_color = "#f5fcd1"
 font_color = "#f5fcd1"
 
-
 window.geometry("900x600")
 window.configure(bg=bg_color)
 
@@ -33,12 +32,27 @@ window.configure(bg=bg_color)
 #question, answer1, answer2, answer3, answer4, checkboxes, next, save and stop
 #5 input fields, 3 buttons, 4 radio buttons(Replacement for checkbox)
 
-name_entry = tk.Entry(window, width=50)
+name_entry = tk.Text(window, height=1, width=50, font='Arial, 12')
 name_entry.pack()
-name_entry.insert(0,"Enter your name: ")
 
 question_entry = tk.Text(window, height=1, width=50, font='Arial, 12')
 question_entry.pack()
+
+def test(var, entry_text):
+    frame = tk.Frame(window)
+    frame.pack(padx=200, pady=10)
+
+    entry = tk.Entry(frame, width=30)
+    entry.pack(side='left')
+    entry.insert(var, entry_text)
+
+    text = tk.Text(frame, height=1, width=50)
+    text.pack(side='left')
+
+    return entry
+
+testfield = test(0, 'hello there')
+
 
 r = IntVar()
 def answer_inputs(window, number, letter):
@@ -95,20 +109,21 @@ def next_button():
     print(quiz_items) #placeholder since the outputs are not yet inputted in a text file
 
 def save_button():
-    with open("user_quiz_test.txt", "w") as file:
+    with open("user_quiz_test.txt", "w", encoding='utf-8') as file:
+        name = name_entry.get('1.0', 'end')
+        file.write(f"Name:{name}")
         for i in range(len(quiz_items)):
             q = quiz_items[i]
             file.write(f"Q{i+1}: {q['question']}\n")
             for j in range(len(q['answers'])):
                 alphabet = chr(65 + j) #turn the IntVar values from r into letters(A,B,C,D)
                 if (j + 1)  == q['correct']:
-                    file.write(f"{alphabet}. {q['answers'][j]} (correct)\n")
+                    file.write(f"{alphabet}. {q['answers'][j]}(correct)\n")
                 else:
                     file.write(f"{alphabet}. {q['answers'][j]}\n")
 
 def exit_button():
     window.destroy()
-
 
 #Use tk.Frame() to arrange the buttons
 button_frame = tk.Frame(window)
