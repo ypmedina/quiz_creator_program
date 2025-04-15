@@ -32,27 +32,21 @@ window.configure(bg=bg_color)
 #question, answer1, answer2, answer3, answer4, checkboxes, next, save and stop
 #5 input fields, 3 buttons, 4 radio buttons(Replacement for checkbox)
 
-name_entry = tk.Text(window, height=1, width=50, font='Arial, 12')
-name_entry.pack()
-
-question_entry = tk.Text(window, height=1, width=50, font='Arial, 12')
-question_entry.pack()
-
-def test(var, entry_text):
+def user_inp(var, entry_text, border, outline):
     frame = tk.Frame(window)
-    frame.pack(padx=200, pady=10)
+    frame.pack(padx=20, pady=10)
 
-    entry = tk.Entry(frame, width=30)
+    entry = tk.Entry(frame, width=15, font='Arial, 12', bd=border, relief=outline)
     entry.pack(side='left')
     entry.insert(var, entry_text)
 
-    text = tk.Text(frame, height=1, width=50)
+    text = tk.Text(frame, height=1, width=50, font='Arial, 12', bd=border, relief=outline)
     text.pack(side='left')
 
-    return entry
+    return text
 
-testfield = test(0, 'hello there')
-
+name_entry = user_inp(0, 'Input name here:', 1, "solid")
+question_entry = user_inp(0, 'input question here:', 1, "solid" )
 
 r = IntVar()
 def answer_inputs(window, number, letter):
