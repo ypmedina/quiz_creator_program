@@ -3,24 +3,11 @@ Create a program that ask user for a question, it will also ask for 4 possible a
 and the correct answer.Write the collected data to a text file.
 Ask another question until the user chose to exit.
 """
-
-#use the function open() to create the text file
-
-#ask the user for their name, after asking the user for their name, display text that will prompt them to
-#write a quiz question and let the user input 4 different answers to the question with 1 being the correct
-#answer.
-
-#make a "Next question" functionality using the while loop, make it go on until the user tells the program
-#to stop.
-
-
 import tkinter as tk
 from tkinter import Radiobutton, IntVar
 
 window =tk.Tk()
-#Make a save, exit, and next button
-#Do checkboxes for the correct answer picking
-#Window design: Header-#f5fcd1, background-#fff9ed, font color-#c
+
 bg_color = "#fff9ed"
 main_color = "#f5fcd1"
 font_color = "#f5fcd1"
@@ -28,16 +15,11 @@ font_color = "#f5fcd1"
 window.geometry("900x600")
 window.configure(bg=bg_color)
 
-#buttons first
-#question, answer1, answer2, answer3, answer4, checkboxes, next, save and stop
-#5 input fields, 3 buttons, 4 radio buttons(Replacement for checkbox)
-
 header_frame = tk.Frame(window, height=50, bd=1, bg='#fff9ed')
 header_frame.pack(fill='x')
 
 header_label = tk.Label(header_frame, text='Quiz maker', font='Arial, 60', bg='#fff9ed')
 header_label.pack(anchor="w")
-
 
 
 def user_inp(var, entry_text, border, outline):
@@ -55,6 +37,7 @@ def user_inp(var, entry_text, border, outline):
 
 name_entry = user_inp(0, 'Input name here:', 1, "solid")
 question_entry = user_inp(0, 'input question here:', 1, "solid" )
+
 
 r = IntVar()
 def answer_inputs(window, number, letter):
@@ -76,13 +59,6 @@ input_field1 = answer_inputs(window, 1, "A")
 input_field2 = answer_inputs(window, 2, "B")
 input_field3 = answer_inputs(window, 3, "C")
 input_field4 = answer_inputs(window, 4, "D")
-
-#Just append the inputs into a list then make the program write that list in the text file
-#Append to the text file will only happen when the user presses "save"
-#Develop the "next" button, only append when the question, all answers and the correct answer is recorded
-#The correct answer is the radio button
-#use the get() function of tkinter
-#Use the 'command=' function of the buttons
 
 
 quiz_items = []
@@ -108,7 +84,6 @@ def next_button():
     input_field4.delete('1.0', 'end')
     r.set(0)
 
-    print(quiz_items) #placeholder since the outputs are not yet inputted in a text file
 
 def save_button():
     with open("user_quiz_GUI.txt", "w", encoding='utf-8') as file:
@@ -124,10 +99,11 @@ def save_button():
                 else:
                     file.write(f"{alphabet}. {q['answers'][j]}\n")
 
+
 def exit_button():
     window.destroy()
 
-#Use tk.Frame() to arrange the buttons
+
 button_frame = tk.Frame(window, bg='#fff9ed')
 button_frame.pack(padx=40, pady=30)
 
