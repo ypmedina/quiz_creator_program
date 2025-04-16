@@ -111,7 +111,7 @@ def next_button():
     print(quiz_items) #placeholder since the outputs are not yet inputted in a text file
 
 def save_button():
-    with open("user_quiz_test.txt", "w", encoding='utf-8') as file:
+    with open("user_quiz_GUI.txt", "w", encoding='utf-8') as file:
         name = name_entry.get('1.0', 'end')
         file.write(f"Name:{name}")
         for i in range(len(quiz_items)):
