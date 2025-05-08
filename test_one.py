@@ -43,4 +43,8 @@ def load_question():
         answer_vars[i].set(q["answers"][i])
     selected.set(0)
 
+
+tk.Label(window, bg='#fff9ed' , textvariable=question_var, font=("Arial", 16), wraplength=550).pack(pady=20)
+
+load_question()
 window.mainloop()
