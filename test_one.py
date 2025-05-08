@@ -9,7 +9,7 @@ bg_color = "#fff9ed"
 main_color = "#f5fcd1"
 font_color = "#f5fcd1"
 
-window.geometry("900x600")
+window.geometry("700x400")
 window.configure(bg=bg_color)
 
 header_frame = tk.Frame(window, height=50, bd=1, bg='#fff9ed')
@@ -56,16 +56,12 @@ def next_question():
         messagebox.showinfo("Quiz Complete", f"{quiz_data['name']}'s Quiz\nScore: {score}/{len(questions)}")
         window.destroy()
 
-tk.Button(window, text="Next", command=next_question).pack(pady=20)
-
-
-
-
-
 tk.Label(window, bg='#fff9ed' , textvariable=question_var, font=("Arial", 16), wraplength=550).pack(pady=20)
 
 for i in range(4):
     tk.Radiobutton(window,bg='#fff9ed', textvariable=answer_vars[i], variable=selected, value=i+1, font=("Arial", 12)).pack(anchor="w", padx=50)
+
+tk.Button(window, bg='#fff9ed', text="Next", command=next_question, height=2, width=5).pack(pady=20)
 
 load_question()
 window.mainloop()
