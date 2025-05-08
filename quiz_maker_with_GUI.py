@@ -5,6 +5,8 @@ Ask another question until the user chose to exit.
 """
 import tkinter as tk
 from tkinter import Radiobutton, IntVar
+import json
+import os
 
 window =tk.Tk()
 
@@ -63,41 +65,47 @@ input_field4 = answer_inputs(window, 4, "D")
 
 quiz_items = []
 def next_button():
-    question = question_entry.get('1.0', 'end')
-    answers = [ input_field1.get('1.0', 'end'),
-                input_field2.get('1.0', 'end'),
-                input_field3.get('1.0', 'end'),
-                input_field4.get('1.0', 'end')
-                ]
+    question = question_entry.get('1.0', 'end').strip()
+    answers = [input_field1.get('1.0', 'end').strip(),
+               input_field2.get('1.0', 'end').strip(),
+               input_field3.get('1.0', 'end').strip(),
+               input_field4.get('1.0', 'end').strip()]
     correct_answer = r.get()
-    if question and all(answers) and correct_answer:
+
+    if question and all(answers) and correct_answer in [1, 2, 3, 4]:
         quiz_items.append({
             'question': question,
-            'answers':answers,
-            'correct':correct_answer
+            'answers': answers,
+            'correct': correct_answer
         })
 
-    question_entry.delete('1.0', 'end')
-    input_field1.delete('1.0', 'end')
-    input_field2.delete('1.0', 'end')
-    input_field3.delete('1.0', 'end')
-    input_field4.delete('1.0', 'end')
-    r.set(0)
+        # Clear fields
+        question_entry.delete('1.0', 'end')
+        input_field1.delete('1.0', 'end')
+        input_field2.delete('1.0', 'end')
+        input_field3.delete('1.0', 'end')
+        input_field4.delete('1.0', 'end')
+        r.set(0)
 
 
 def save_button():
-    with open("user_quiz_GUI.txt", "w", encoding='utf-8') as file:
-        name = name_entry.get('1.0', 'end')
-        file.write(f"Name:{name}")
-        for i in range(len(quiz_items)):
-            q = quiz_items[i]
-            file.write(f"Q{i+1}: {q['question']}\n")
-            for j in range(len(q['answers'])):
-                alphabet = chr(65 + j) #turn the IntVar values from r into letters(A,B,C,D)
-                if (j + 1)  == q['correct']:
-                    file.write(f"{alphabet}. {q['answers'][j]}(correct)\n")
-                else:
-                    file.write(f"{alphabet}. {q['answers'][j]}\n")
+    quiz_data = {
+        "name": name_entry.get('1.0', 'end').strip(),
+        "questions": []
+    }
+
+    for i, q in enumerate(quiz_items):
+        question_data = {
+            "question": q['question'],
+            "answers": q['answers'],
+            "correct": q['correct']
+        }
+        quiz_data["questions"].append(question_data)
+
+    desktop_path = os.path.join(os.path.expanduser("~"), "Documents", "user_quiz_GUI.json")
+
+    with open(desktop_path, "w", encoding='utf-8') as file:
+        json.dump(quiz_data, file, indent=4)
 
 
 def exit_button():
@@ -118,20 +126,3 @@ next_btn.pack(anchor='center')
 
 
 window.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

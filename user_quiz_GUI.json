@@ -1,25 +1,25 @@
 {
-    "name": "sa",
+    "name": "wq",
     "questions": [
         {
-            "question": "sa",
+            "question": "wq",
             "answers": [
-                "sa",
-                "sa",
-                "sa",
-                "sa"
+                "wq",
+                "wq",
+                "wq",
+                "wq"
             ],
-            "correct": 3
-        },
+            "correct": 1
+        }   ,
         {
-            "question": "sa",
+            "question": "wq",
             "answers": [
-                "sa",
-                "sa",
-                "sa",
-                "sa"
+                "wq",
+                "wq",
+                "wq",
+                "wq"
             ],
-            "correct": 2
+            "correct": 4
         }
     ]
 }
