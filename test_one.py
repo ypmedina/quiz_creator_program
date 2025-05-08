@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Radiobutton, IntVar
+from tkinter import messagebox
 import os
 import json
 
@@ -30,7 +30,8 @@ except FileNotFoundError:
 
 questions = quiz_data["questions"] #from kson
 question_number = 0
-
+current_number = 0
+score = 0
 
 question_var = tk.StringVar()
 selected = tk.IntVar()
@@ -44,7 +45,27 @@ def load_question():
     selected.set(0)
 
 
+def next_question():
+    global current_number, score
+    if selected.get() == questions[current_number]["correct"]:
+        score += 1
+    current_number += 1
+    if current_number < len(questions):
+        load_question()
+    else:
+        messagebox.showinfo("Quiz Complete", f"{quiz_data['name']}'s Quiz\nScore: {score}/{len(questions)}")
+        window.destroy()
+
+tk.Button(window, text="Next", command=next_question).pack(pady=20)
+
+
+
+
+
 tk.Label(window, bg='#fff9ed' , textvariable=question_var, font=("Arial", 16), wraplength=550).pack(pady=20)
+
+for i in range(4):
+    tk.Radiobutton(window,bg='#fff9ed', textvariable=answer_vars[i], variable=selected, value=i+1, font=("Arial", 12)).pack(anchor="w", padx=50)
 
 load_question()
 window.mainloop()
