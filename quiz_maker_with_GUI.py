@@ -4,7 +4,7 @@ and the correct answer.Write the collected data to a text file.
 Ask another question until the user chose to exit.
 """
 import tkinter as tk
-from tkinter import Radiobutton, IntVar
+from tkinter import Radiobutton, IntVar, messagebox
 import json
 import os
 
@@ -103,6 +103,9 @@ def save_button():
         quiz_data["questions"].append(question_data)
 
     desktop_path = os.path.join(os.path.expanduser("~"), "Documents", "user_quiz_GUI.json")
+
+    messagebox.showinfo("Saved", "Quiz saved to your documents path")
+
 
     with open(desktop_path, "w", encoding='utf-8') as file:
         json.dump(quiz_data, file, indent=4)
