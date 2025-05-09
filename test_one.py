@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import os
 import json
+import random
 
 window = tk.Tk()
 
@@ -29,17 +30,17 @@ except FileNotFoundError:
 
 
 questions = quiz_data["questions"] #from kson
-question_number = 0
 current_number = 0
 score = 0
+random.shuffle(questions)
 
 question_var = tk.StringVar()
 selected = tk.IntVar()
 answer_vars = [tk.StringVar() for _ in range(4)]
 
 def load_question():
-    q = questions[question_number]
-    question_var.set(f"Q{question_number+1}: {q['question']}")
+    q = questions[current_number]
+    question_var.set(f"Q{current_number+1}: {q['question']}")
     for i in range(4):
         answer_vars[i].set(q["answers"][i])
     selected.set(0)
