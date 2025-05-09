@@ -58,10 +58,24 @@ def next_question():
 
 tk.Label(window, bg='#fff9ed' , textvariable=question_var, font=("Arial", 16), wraplength=550).pack(pady=20)
 
+
+def exit_button():
+    window.destroy()
+    messagebox.showinfo("Stopped the quiz program", "Thank you for trying the quiz program! Have a good day")
+
 for i in range(4):
     tk.Radiobutton(window,bg='#fff9ed', textvariable=answer_vars[i], variable=selected, value=i+1, font=("Arial", 12)).pack(anchor="w", padx=50)
 
-tk.Button(window, bg='#fff9ed', text="Next", command=next_question, height=2, width=5).pack(pady=20)
+
+button_frame = tk.Frame(window, bg='#fff9ed')
+button_frame.pack(padx=40, pady=30)
+
+next_btn = tk.Button(button_frame, bg='#fff9ed', text="Next", command=next_question)
+next_btn.grid(row=0, column=2, pady=10, padx=20)
+
+stop_btn = tk.Button(button_frame, bg='#fff9ed', text="Stop", command=exit_button)
+stop_btn.grid(row=0, column=1, pady=10, padx=20)
+
 
 load_question()
 window.mainloop()
