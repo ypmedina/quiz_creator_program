@@ -18,6 +18,7 @@ header_frame.pack(fill='x')
 
 header_label = tk.Label(header_frame, text='Quiz', font='Arial, 60', bg='#fff9ed')
 header_label.pack(anchor="w")
+
 desktop_path = os.path.join(os.path.expanduser("~"), "Documents", "user_quiz_GUI.json")
 
 try:
